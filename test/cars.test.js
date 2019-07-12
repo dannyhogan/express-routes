@@ -62,4 +62,18 @@ describe('route tests', () => {
         });
     });
   });
+
+  it('can delete an item by its index', () => {
+    return request(app)
+      .delete('/api/v1/cars/0')
+      .then(res => {
+        expect(res.body).toEqual({
+          type: 'sportscar',
+          color: 'black',
+          manufacturer: 'Lamborghini',
+          topSpeed: 180 
+        })
+      });
+  });
+
 });
