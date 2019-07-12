@@ -42,4 +42,24 @@ describe('route tests', () => {
       });
   });
 
+  it('can update a car with PUT method', () => {
+    const newItem = {
+      type: 'sportscar',
+      color: 'black',
+      manufacturer: 'Lamborghini',
+      topSpeed: 180 
+    };
+
+    return request(app)
+      .put('/api/v1/cars/0')
+      .send(newItem)
+      .then(res => {
+        expect(res.body).toEqual({
+          type: 'sportscar',
+          color: 'black',
+          manufacturer: 'Lamborghini',
+          topSpeed: 180 
+        });
+    });
+  });
 });
